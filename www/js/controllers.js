@@ -27,8 +27,8 @@ angular.module('starter.controllers', [])
 	}); */
 
    // return $http.post("http://www.familienkarte-gs.de/app/app.php", {"action": "sponsored"})
-   $http.post("http://www.familienkarte-gs.de/app/app.php", {action : "sponsored"}).then(function (response){
-      
+   $http.post("http://www.familienkarte-gs.de/app/app.php?action=sponsored", {action : "sponsored"}).then(function (response){
+
       $scope.sponsored = response.data;
    });
 
