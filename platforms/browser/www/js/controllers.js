@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
 
    // sponsored;
    $scope.nosponsores = true;
-   /* PartnerFactory.sponsored().then(function(response){
+   PartnerFactory.sponsored().then(function(response){
       if( response.data.error ) {
          $scope.nosponsores = true;
       } else {
@@ -24,18 +24,25 @@ angular.module('starter.controllers', [])
       }
       $scope.sponsored = response.data;
 	}).catch(function(response){
-	}); */
-
-   // return $http.post("http://www.familienkarte-gs.de/app/app.php", {"action": "sponsored"})
-   $http.post("http://www.familienkarte-gs.de/app/app.php?action=sponsored", {action : "sponsored"}).then(function (response){
-
-      $scope.sponsored = response.data;
-   });
+	});
 
    $scope.RedirectPartner = function(id) {
       // location.href="#/app-fk/user" + id;
       $state.go("app.user", {"userID": id})
    };
+
+   $rootScope.newestPartners     = [];
+   PartnerFactory.newest( 5 ).then(function( response ){
+      $rootScope.newestPartners = $rootScope.newestPartners.concat(response.data);
+      $rootScope.newestPartners.push(response.data);
+      if( response.data.length > 9 ) {
+         // $scope.$broadcast('scroll.infiniteScrollComplete');
+      } else {
+         $scope.moreDataCanBeLoaded = function() {return false;};
+      }
+      // $scope.page += 1;
+   }).catch(function(response){
+   });
 
 })
 

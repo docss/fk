@@ -11,7 +11,7 @@
 		</label>
   	</div>
 
-	<div id="sponsored_ad" ng-click="RedirectPartner(sponsored.ID)">
+	<div ng-hide="nosponsores" id="sponsored_ad" ng-click="RedirectPartner(sponsored.ID)">
 		<img src="{{sponsored.sponsored_image}}" />
 		<div class="sponsored_container">
 			<p class="sponsored_date"><span>{{sponsored.sponsored_date}}</span></p>
@@ -21,6 +21,22 @@
 			</p>
 		</div>
 	</div>
+
+	<h2 class="custom-headline green">Die neuesten 5 Familienpartner</h2>
+
+   <ion-list ng-repeat="p in newestPartners">
+
+		 <!--  ng-repeat="p in partner.result" -->
+        <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.ID > 0">
+					<div class="partner-logo"><img src="{{p.logo}}" /></div>
+					<div class="partner-meta">
+	        	<p class="partner-title">{{p.name}}</p>
+						<p class="partner-adress">{{p.street}} {{p.number}}</p>
+						<p class="partner-city">({{p.ID}}) {{p.zip}} {{p.city}}</p>
+					</div>
+       	</ion-item>
+
+    </ion-list>
 
 
   </ion-content>
