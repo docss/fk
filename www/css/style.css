@@ -87,13 +87,12 @@ h1 a i {
 /* ----------------------------------------------------------------------------- */
 /* Sponsored Ad */
 #sponsored_ad {
-	margin-bottom:10px;
 	position:relative;
 	overflow:hidden;
 }
 .sponsored_container {
 	position:absolute;
-	bottom:4px;
+	bottom:14px;
 	left:0;
 	width:100%;
 }
@@ -240,4 +239,23 @@ h1 a i {
 	bottom:-1px;
 	content:"";
 	width:33.3%;
+}
+
+
+/* content bg, background, behaviors */
+.scroll {
+	padding:0 10px;
+}
+.pane, .view {
+	background:#f1f1f1;
+}
+#sponsored_ad {
+	padding:10px 0;
+}
+.list {
+	padding-top:0;
+	padding-bottom:8px;
+}
+.item {
+	border:0;
 }
