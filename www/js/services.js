@@ -7,7 +7,7 @@ angular.module('starter.services', [])
         return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "list", p: page, filters, favs })
     },
     sponsored: function() {
-        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "sponsored" })
+        return $http.post("http://www.familienkarte-gs.de/app/app.php", {"action": "sponsored"})
     },
     favoriten: function( page, favs ) {
         return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "favoriten", p: page, favs })
