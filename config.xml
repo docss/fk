@@ -14,7 +14,7 @@
       Sven Hoffmann, hc media GmbH
     </author>
   <content src="index.html"/>
-  <access origin="*"/>
+  <access origin="*" subdomains="true" browserOnly="true" />
 
 
  <preference name="permissions" value="android.permission.INTERNET"/>
@@ -30,23 +30,6 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
-
-  <platform name="android">
-     <splash src="splash.png" />
-     <icon src="icon.png" />
-     <splash src="assets/splash/res-long-port-hdpi/default.png" platform="android" density="port-hdpi" />
-     <splash src="assets/splash/res-long-port-ldpi/default.png" platform="android" density="port-ldpi" />
-     <splash src="assets/splash/res-long-port-mdpi/default.png" platform="android" density="port-mdpi" />
-     <splash src="assets/splash/res-long-port-xhdpi/default.png" platform="android" density="port-xhdpi" />
-     <splash src="assets/splash/res-long-port-xxhdpi/default.png" platform="android" density="port-xxhdpi" />
-     <splash src="assets/splash/res-long-port-xxxhdpi/default.png" platform="android" density="port-xxxhdpi" />
-     <splash src="assets/splash/res-notlong-port-hdpi/default.png" platform="android" density="port-hdpi" />
-     <splash src="assets/splash/res-notlong-port-ldpi/default.png" platform="android" density="port-ldpi" />
-     <splash src="assets/splash/res-notlong-port-mdpi/default.png" platform="android" density="port-mdpi" />
-     <splash src="assets/splash/res-notlong-port-xhdpi/default.png" platform="android" density="port-xhdpi" />
-     <splash src="assets/splash/res-notlong-port-xxhdpi/default.png" platform="android" density="port-xxhdpi" />
-     <splash src="assets/splash/res-notlong-port-xxxhdpi/default.png" platform="android" density="port-xxxhdpi" />
-  </platform>
 
 
 </widget>

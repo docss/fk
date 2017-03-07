@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.appfk689212" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <preference name="loglevel" value="DEBUG" />
+<widget id="com.ionicframework.appfk689212" version="1.0.0" versionCode="19" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
@@ -22,6 +21,15 @@
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
+    <name>familienKarte</name>
+    <description>
+        An Ionic Framework and Cordova project.
+    </description>
+    <author email="sven.hoffmann@hcmedia.de" href="http://www.hcmedia.de/">
+      Sven Hoffmann, hc media GmbH
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
     <splash src="splash.png" />
     <icon src="icon.png" />
     <splash density="port-hdpi" platform="android" src="assets/splash/res-long-port-hdpi/default.png" />
@@ -36,15 +44,8 @@
     <splash density="port-xhdpi" platform="android" src="assets/splash/res-notlong-port-xhdpi/default.png" />
     <splash density="port-xxhdpi" platform="android" src="assets/splash/res-notlong-port-xxhdpi/default.png" />
     <splash density="port-xxxhdpi" platform="android" src="assets/splash/res-notlong-port-xxxhdpi/default.png" />
-    <name>familienKarte</name>
-    <description>
-        An Ionic Framework and Cordova project.
-    </description>
-    <author email="sven.hoffmann@hcmedia.de" href="http://www.hcmedia.de/">
-      Sven Hoffmann, hc media GmbH
-    </author>
-    <content src="index.html" />
-    <access origin="*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="permissions" value="android.permission.INTERNET" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
