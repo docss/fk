@@ -33,7 +33,7 @@ angular.module('starter.controllers', [])
       } else {
          $scope.nosponsores = false;
       }
-      // $scope.sponsored = response.data;
+      $scope.sponsored = response.data;
    });
 
    $scope.RedirectPartner = function(id) {
