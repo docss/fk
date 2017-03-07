@@ -1,0 +1,38 @@
+<ion-view>
+   <ion-nav-title><strong>Familien</strong>karte</ion-nav-title>
+   <ion-content>
+
+     <div id="detail">
+
+        <div id="detail-header">
+
+           <p class="logo" ng-if="user.logo"><img src="{{user.logo}}" /></p>
+           <h1 ng-bind-html="user.name"></h1>
+           <p class="adress"><i class="icon ion-ios-location"></i> {{user.street}} {{user.number}} &#183; {{user.zip}} {{user.city}}</p>
+           <p class="branche">Branche: {{user.branche}}</p>
+
+         <div class="tabs tabs-icon-left">
+            <a class="tab-item" href="tel:{{user.phone}}" ng-if="user.phone"><i class="icon ion-android-call"></i></a>
+            <a class="tab-item" href="{{user.www}}" target="_blank" ng-if="user.www"><i class="icon ion-android-globe"></i></a>
+            <a class="tab-item" href="mailto:{{user.email}}" ng-if="user.email"><i class="icon ion-ios-email"></i></a>
+
+            <a class="tab-item" ng-click="setFav('remove', user.ID)" ng-if="isFav == 1"><i class="icon ion-star" style="color:#75af2f;"></i></a>
+            <a class="tab-item" ng-click="setFav('set', user.ID)" ng-if="isFav != 1"><i class="icon ion-star"></i></a>
+
+          </div>
+
+          <!-- div ng-bind="myLocation"></div>
+          <div>Partner: {{user.lat}} {{user.long}}</div>
+          <div ng-bind="myDistance" style="font-weight:bold;"></div -->
+
+          <p class="angebot" ng-bind-html="user.angebot"></p>
+
+
+
+
+           </div>
+
+      </div>
+
+  </ion-content>
+</ion-view>

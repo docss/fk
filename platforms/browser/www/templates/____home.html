@@ -1,0 +1,45 @@
+<ion-view >
+
+	<ion-nav-title><strong>Familien</strong>karte</ion-nav-title>
+
+	<ion-content>
+
+  	<div class="partner-tabs list">
+		<label class="item item-input">
+    		<i class="icon ion-search placeholder-icon"></i>
+			<form ng-submit="Search()"><input type="text" ng-model="search.term"  placeholder="Suchen" /></form>
+		</label>
+  	</div>
+
+	<div ng-hide="nosponsores" id="sponsored_ad" ng-click="RedirectPartner(sponsored.ID)">
+		<img src="{{sponsored.sponsored_image}}" />
+		<div class="sponsored_container">
+			<p class="sponsored_date"><span>{{sponsored.sponsored_date}}</span></p>
+			<p class="sponsored_text">
+				<span class="title" ng-bind-html="sponsored.name"></span>
+				<span class="text" ng-bind-html="sponsored.sponsored_text"></span>
+			</p>
+		</div>
+	</div>
+
+	<h2 class="custom-headline green">Die neuesten 5 Familienpartner</h2>
+
+   <ion-list ng-repeat="p in newestPartners">
+
+		 <!--  ng-repeat="p in partner.result" -->
+        <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.ID > 0">
+					<div class="partner-logo"><img src="{{p.logo}}" /></div>
+					<div class="partner-meta">
+	        	<p class="partner-title">{{p.name}}</p>
+						<p class="partner-adress">{{p.street}} {{p.number}}</p>
+						<p class="partner-city">({{p.ID}}) {{p.zip}} {{p.city}}</p>
+					</div>
+       	</ion-item>
+
+    </ion-list>
+
+
+  </ion-content>
+
+
+</ion-view>

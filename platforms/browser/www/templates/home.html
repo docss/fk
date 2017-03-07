@@ -1,0 +1,29 @@
+<ion-view >
+
+	<ion-nav-title><strong>Familien</strong>karte</ion-nav-title>
+
+	<ion-content>
+
+  	<div class="partner-tabs list">
+		<label class="item item-input">
+    		<i class="icon ion-search placeholder-icon"></i>
+			<form ng-submit="Search()"><input type="text" ng-model="search.term"  placeholder="Suchen" /></form>
+		</label>
+  	</div>
+
+	<div id="sponsored_ad" ng-click="RedirectPartner(sponsored.ID)">
+		<img src="{{sponsored.sponsored_image}}" />
+		<div class="sponsored_container">
+			<p class="sponsored_date"><span>{{sponsored.sponsored_date}}</span></p>
+			<p class="sponsored_text">
+				<span class="title" ng-bind-html="sponsored.name"></span>
+				<span class="text" ng-bind-html="sponsored.sponsored_text"></span>
+			</p>
+		</div>
+	</div>
+
+
+  </ion-content>
+
+
+</ion-view>
