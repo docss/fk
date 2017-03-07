@@ -83,6 +83,9 @@ h1 a i {
 #detail .tab-item {
 	padding-top:0 !important;
 }
+.tab-nav {
+	border-top:1px solid #f1f1f1;
+}
 
 /* ----------------------------------------------------------------------------- */
 /* Sponsored Ad */
@@ -129,10 +132,15 @@ h1 a i {
 /* Partner Filter */
 .filter-tabs {
 	overflow:hidden;
+	margin:0 -10px 10px -10px;
 }
 .filter-tab {
 	float:left;
 	width:50%;
+	border-right:1px solid #f1f1f1;
+}
+.filter-tab:last-child {
+	border:0;
 }
 .filter-tab .input-label {
 	width:100%;
@@ -149,7 +157,9 @@ h1 a i {
 .partner-tabs {
 	overflow:hidden;
 	background:#f0f3f8;
-	margin:0;
+	margin:0 -10px;
+	padding-bottom:0 !important;
+	border-bottom:1px solid #f1f1f1;
 }
 .partner-tab {
 	width:100%;
@@ -241,6 +251,24 @@ h1 a i {
 	width:33.3%;
 }
 
+/* spinner */
+.scroll {
+	min-height:100%;
+}
+div.spinner {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  height: 100%;
+  text-align: center;
+  background:#fff;
+  z-index:9;
+  padding-top:40%;
+}
+.spinner svg {
+  width: 19% !important;
+  height: 85px !important;
+}
 
 /* content bg, background, behaviors */
 .scroll {

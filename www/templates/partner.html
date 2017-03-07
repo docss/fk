@@ -4,6 +4,10 @@
 
 	<ion-content>
 
+		<div class="spinner" ng-hide="spinninghide">
+        <ion-spinner icon="android"></ion-spinner>
+      </div>
+
   	<div class="partner-tabs list">
 		<label class="item item-input">
     		<i class="icon ion-search placeholder-icon"></i>
@@ -33,12 +37,12 @@
     <ion-list ng-repeat="p in partners">
 
 		 <!--  ng-repeat="p in partner.result" -->
-        <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.ID > 0">
+        <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.name != '' && p.ID > 0">
 					<div class="partner-logo"><img src="{{p.logo}}" /></div>
 					<div class="partner-meta">
 	        	<p class="partner-title">{{p.name}}</p>
 						<p class="partner-adress">{{p.street}} {{p.number}}</p>
-						<p class="partner-city">({{p.ID}}) {{p.zip}} {{p.city}}</p>
+						<p class="partner-city">{{p.zip}} {{p.city}}</p>
 					</div>
        	</ion-item>
 

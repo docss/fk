@@ -4,7 +4,9 @@
 
 	<ion-content>
 
-
+		<div class="spinner" ng-hide="spinninghide">
+        <ion-spinner icon="android"></ion-spinner>
+      </div>
 
     <ion-list ng-repeat="p in favoriten">
 
@@ -13,7 +15,7 @@
 				  <div class="partner-meta">
 			  <p class="partner-title">{{p.name}}</p>
 					  <p class="partner-adress">{{p.street}} {{p.number}}</p>
-					  <p class="partner-city">({{p.ID}}) {{p.zip}} {{p.city}}</p>
+					  <p class="partner-city">{{p.zip}} {{p.city}}</p>
 				  </div>
 		  </ion-item>
 

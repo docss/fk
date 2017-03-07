@@ -40,18 +40,17 @@ angular.module('starter.controllers', [])
       } else {
          $scope.moreDataCanBeLoaded = function() {return false;};
       }
-      // $scope.page += 1;
+      $scope.spinninghide = true;
    }).catch(function(response){
+      $scope.spinninghide = true;
    });
+
 
 })
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
 /* PARTNER LIST; SEARCH; FILTER */
 .controller("PartnerCtrl", function($scope, $rootScope, $timeout, FilterFactory, PartnerFactory, $stateParams) {
-
-   // alert( $stateParams.q );
-
 
    $rootScope.partners     = [];
    $scope.page             = 0;
@@ -89,7 +88,9 @@ angular.module('starter.controllers', [])
             $scope.moreDataCanBeLoaded = function() {return false;};
          }
          $scope.page += 1;
+         $scope.spinninghide = true;
       }).catch(function(response){
+         $scope.spinninghide = true;
       });
 
   };
@@ -131,7 +132,9 @@ angular.module('starter.controllers', [])
             $scope.moreDataCanBeLoaded = function() {return false;};
          }
          $scope.page += 1;
+         $scope.spinninghide = true;
       }).catch(function(response){
+         $scope.spinninghide = true;
       });
 
   };
@@ -142,6 +145,8 @@ angular.module('starter.controllers', [])
 /* ... */
 .controller("UserCtrl", function($scope, $state, PartnerFactory, $cordovaGeolocation, StorageService) {
 
+
+
    PartnerFactory.single().then(function(response){
 
       $scope.user = response.data;
@@ -150,10 +155,13 @@ angular.module('starter.controllers', [])
       if( StorageService.get($scope.user.ID) >= 0 ) $scope.isFav = true;
       else $scope.isFav = false;
 
+      $scope.spinninghide = true;
+
 	}).catch(function(response){
+
+      $scope.spinninghide = true;
+
 	});
-
-
 
    $scope.setFav = function( action, id ) {
       console.log( "Dealing..." );
