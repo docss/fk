@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
 /* PARTNER LIST; SEARCH; FILTER */
-.controller("HomeCtrl", function($scope, $rootScope, $timeout, PartnerFactory, $location, $state) {
+.controller("HomeCtrl", function($scope, $rootScope, $timeout, $http, PartnerFactory, $location, $state) {
 
    $scope.search = {};
    $scope.Search = function() {
@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
 
    // sponsored;
    $scope.nosponsores = true;
-   PartnerFactory.sponsored().then(function(response){
+   /* PartnerFactory.sponsored().then(function(response){
       if( response.data.error ) {
          $scope.nosponsores = true;
       } else {
@@ -24,7 +24,17 @@ angular.module('starter.controllers', [])
       }
       $scope.sponsored = response.data;
 	}).catch(function(response){
-	});
+	}); */
+
+   // return $http.post("http://www.familienkarte-gs.de/app/app.php", {"action": "sponsored"})
+   $http.post("http://www.familienkarte-gs.de/app/app.php", {action : "sponsored"}).then(function (response){
+      if( response.data.error ) {
+         $scope.nosponsores = true;
+      } else {
+         $scope.nosponsores = false;
+      }
+      // $scope.sponsored = response.data;
+   });
 
    $scope.RedirectPartner = function(id) {
       // location.href="#/app-fk/user" + id;
