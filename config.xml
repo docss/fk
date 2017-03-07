@@ -35,15 +35,9 @@
    <preference name="webviewbounce" value="false"/>
    <preference name="UIWebViewBounce" value="false"/>
    <preference name="DisallowOverscroll" value="true"/>
-    <preference name="SplashScreen" value="screen"/>
-   <preference name="SplashScreenDelay" value="2000"/>
-   <preference name="FadeSplashScreenDuration" value="2000"/>
+
    <preference name="android-minSdkVersion" value="16"/>
    <preference name="BackupWebStorage" value="none"/>
-   <feature name="StatusBar">
-     <param name="ios-package" value="CDVStatusBar" onload="true"/>
-   </feature>
-
 
   <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
   <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
@@ -138,6 +132,7 @@
   </platform>
 
 
-
+  <preference name="SplashScreenDelay" value="2000"/>
+  <preference name="FadeSplashScreenDuration" value="2000"/>
 
 </widget>
