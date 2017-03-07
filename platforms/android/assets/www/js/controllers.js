@@ -1,61 +1,67 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout, PartnerFactory, FilterFactory) {
+})
 
-  	/* $scope.filterData 	= {}; */
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+/* PARTNER LIST; SEARCH; FILTER */
+.controller("HomeCtrl", function($scope, $rootScope, $timeout, PartnerFactory, $location, $state) {
 
-	/* $ionicModal.fromTemplateUrl('templates/modal.filter.html', {
-	    scope: $scope
-	}).then(function(modal) {
-		$scope.modal = modal;
+   $scope.search = {};
+   $scope.Search = function() {
+      if( $scope.search.term ) {
+         $state.go('app.partner', {"q": $scope.search.term});
+      }
+   }
+
+   // sponsored;
+   $scope.nosponsores = true;
+   PartnerFactory.sponsored().then(function(response){
+      if( response.data.error ) {
+         $scope.nosponsores = true;
+      } else {
+         $scope.nosponsores = false;
+      }
+      $scope.sponsored = response.data;
+	}).catch(function(response){
 	});
-	$scope.closeFilter = function() {
-	    $scope.modal.hide();
-	}; */
 
-   /*
-	$scope.filter = function() {
-		FilterFactory.orte().then( function(response) {
-			$scope.orte = response;
+   $scope.RedirectPartner = function(id) {
+      // location.href="#/app-fk/user" + id;
+      $state.go("app.user", {"userID": id})
+   };
 
-		});
-		FilterFactory.branchen().then( function(response) {
-			$scope.branchen = response;
-
-		});
-	    $scope.modal.show();
-	}; */
-
-   /*
-	$scope.doFilter = function() {
-		$scope.filterData.action = "list";
-	    console.log($scope.filterData);
-	    $scope.hasError = false;
-		PartnerFactory.filter( $scope.filterData ).then( function( response ) {
-
-			$rootScope.partners = response;
-	    	console.log( response );
-	    	// console.log( response.data.error );
-	    	$timeout(function() {
-	      		$scope.closeFilter();
-	    	}, 1000);
-
-		}).catch( function(response) {
-
-		});
-
-  }; // doFilter
-  */
+   $rootScope.newestPartners     = [];
+   PartnerFactory.newest( 5 ).then(function( response ){
+      $rootScope.newestPartners = $rootScope.newestPartners.concat(response.data);
+      $rootScope.newestPartners.push(response.data);
+      if( response.data.length > 9 ) {
+         // $scope.$broadcast('scroll.infiniteScrollComplete');
+      } else {
+         $scope.moreDataCanBeLoaded = function() {return false;};
+      }
+      // $scope.page += 1;
+   }).catch(function(response){
+   });
 
 })
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
 /* PARTNER LIST; SEARCH; FILTER */
-.controller("PartnerCtrl", function($scope, $rootScope, $timeout, FilterFactory, PartnerFactory) {
+.controller("PartnerCtrl", function($scope, $rootScope, $timeout, FilterFactory, PartnerFactory, $stateParams) {
+
+   // alert( $stateParams.q );
+
 
    $rootScope.partners     = [];
    $scope.page             = 0;
    $scope.filterData       = {};
+
+   if( $stateParams.q ) {
+      $scope.filterData = {};
+      $scope.filterData = {"q":$stateParams.q};
+   }
+
    $scope.moreDataCanBeLoaded = function() {return true;};
    // $rootScope.filterDataOrt 	= "";
    // Fill Filters
@@ -88,6 +94,11 @@ angular.module('starter.controllers', [])
 
   };
 
+  $scope.Filtering = function() {
+     // alert("fdf");
+     $scope.loadMore(1);
+ }
+
 
 
 })
@@ -114,15 +125,9 @@ angular.module('starter.controllers', [])
          if( response.data.error ) $rootScope.error = response.data.error;
          $rootScope.favoriten = $rootScope.favoriten.concat(response.data);
          $rootScope.favoriten.push(response.data);
-
-         // console.log( response.data.length );
          $scope.$broadcast('scroll.infiniteScrollComplete');
          if( response.data.length > 9 ) {
-
-
-
          } else {
-            // $scope.showOrHide = function() {return true;}
             $scope.moreDataCanBeLoaded = function() {return false;};
          }
          $scope.page += 1;

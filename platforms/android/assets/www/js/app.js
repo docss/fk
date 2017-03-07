@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngStorage'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ngStorage'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,19 +22,44 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngStora
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+   $ionicConfigProvider.tabs.position('bottom');
   $stateProvider
 
-  .state('app', {
+  /* .state('app', {
     url: '/app-fk',
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
+}) */
+  /* .state('app.tab', {
+    url: '/tab',
+    abstract: true,
+    templateUrl: 'templates/tab.html',
+    controller: 'AppCtrl'
+}) */
+   .state('app', {
+    url: '/app-fk',
+    abstract: true,
+    templateUrl: 'templates/tab.html',
+    controller: 'AppCtrl'
+   })
+  .state('app.home', {
+     url: '/home',
+     cache: false,
+     views: {
+        'homeContent': {
+           templateUrl: 'templates/home.html',
+           controller: "HomeCtrl"
+        }
+     }
   })
   .state('app.partner', {
-    url: '/partner',
+    url: '/partner?q',
+    cache: false,
     views: {
-      'menuContent': {
+      'partnerContent': {
         templateUrl: 'templates/partner.html',
         controller: "PartnerCtrl"
       }
@@ -44,7 +69,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngStora
     cache: false,
     url: '/favoriten',
     views: {
-      'menuContent': {
+      'favoritenContent': {
         templateUrl: 'templates/favoriten.html',
         controller: "FavoritenCtrl"
       }
@@ -52,8 +77,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngStora
   })
   .state('app.user', {
     url: '/user/:userID',
+    cache: false,
     views: {
-      'menuContent': {
+      'userContent': {
         templateUrl: 'templates/user.html',
         controller: 'UserCtrl'
       }
@@ -61,6 +87,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngStora
 });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app-fk/partner');
+  $urlRouterProvider.otherwise('/app-fk/home');
 
 });

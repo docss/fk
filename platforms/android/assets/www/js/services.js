@@ -1,20 +1,25 @@
-angular.module('starter')
+angular.module('starter.services', [])
 
 .factory('PartnerFactory', function ($http, $rootScope, $stateParams) {
 
   return {
     all: function ( page, filters, favs ) {
-      	// return $http.get('https://friends.json/all', { params: { user_id: $rootScope.session } })
-      	return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "list", p: page, filters, favs })
+        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "list", p: page, filters, favs })
+    },
+    sponsored: function() {
+        return $http.post("http://www.familienkarte-gs.de/app/app.php", {"action": "sponsored"})
     },
     favoriten: function( page, favs ) {
-         return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "favoriten", p: page, favs })
+        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "favoriten", p: page, favs })
     },
     single: function () {
-		return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "partner", ID: $stateParams.userID})
+	     return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "partner", ID: $stateParams.userID})
     },
     filter: function ( page, filters ) {
-      	return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "list", p: page, filter: filters})
+        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "list", p: page, filter: filters})
+    },
+    newest: function( max ) {
+        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "newest", limit: max})
     }
   };
 
