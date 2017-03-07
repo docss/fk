@@ -13,7 +13,7 @@
   <access origin="*"/>
 
 
- 
+ <preference name="permissions" value="android.permission.INTERNET"/>
 
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
