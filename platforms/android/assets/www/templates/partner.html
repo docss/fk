@@ -1,0 +1,50 @@
+<ion-view >
+
+	<ion-nav-title><strong>Familien</strong>karte</ion-nav-title>
+
+	<ion-content>
+
+  	<div class="partner-tabs list">
+		<label class="item item-input">
+    		<i class="icon ion-search placeholder-icon"></i>
+			<input type="text" ng-model="filterData.q" data-ng-change="Filtering()" placeholder="Suchen" />
+		</label>
+  	</div>
+
+	<div class="filter-tabs">
+		<div class="filter-tab">
+			<label class="item item-input item-select">
+		    	<div class="input-label">Ort</div>
+		    	<select ng-model="filterData.ort" data-ng-change="loadMore(1)">
+					<option ng-repeat="ort in orte.data">{{ort}}</option>
+		    	</select>
+	  		</label>
+    	</div>
+		<div class="filter-tab">
+			<label class="item item-input item-select">
+				<div class="input-label">Branche</div>
+				<select ng-model="filterData.branche" data-ng-change="loadMore(1)">
+					<option ng-repeat="branche in branchen.data">{{branche}}</option>
+				</select>
+			</label>
+		</div>
+  	</div>
+
+    <ion-list ng-repeat="p in partners">
+
+		 <!--  ng-repeat="p in partner.result" -->
+        <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.ID > 0">
+					<div class="partner-logo"><img src="{{p.logo}}" /></div>
+					<div class="partner-meta">
+	        	<p class="partner-title">{{p.name}}</p>
+						<p class="partner-adress">{{p.street}} {{p.number}}</p>
+						<p class="partner-city">({{p.ID}}) {{p.zip}} {{p.city}}</p>
+					</div>
+       	</ion-item>
+
+    </ion-list>
+
+	 <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="moreDataCanBeLoaded()"></ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>

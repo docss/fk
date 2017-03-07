@@ -1,0 +1,166 @@
+/* Empty. Add your own CSS if you like */
+h1 {
+	padding-left:15px;
+	padding-right:15px;
+}
+h1.headline {
+	font-size:25px;
+	padding:20px 15px;
+}
+h1 i {
+	color:#000;
+	float:right;
+}
+h1 a i {
+	color:#000;
+}
+
+
+.bar.bar-stable {
+	background:#fff;
+	border-bottom:1px solid #0092ac;
+}
+.bar.bar-stable::before {
+	width:33.3%;
+	content:"";
+	display:block;
+	border-bottom:1px solid #75af2f;
+	position:absolute;
+	left:0;
+	bottom:-1px;
+}
+.bar.bar-stable::after {
+	width:33.3%;
+	content:"";
+	display:block;
+	border-bottom:1px solid #ff8529;
+	position:absolute;
+	right:0;
+	bottom:-1px;
+}
+
+.bar .title.title-left {
+	text-align:center;
+	left:0 !important;
+	color:#000;
+}
+
+.scroll-content {
+	padding-top:0;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* Partner Filter */
+.filter-tabs {
+	overflow:hidden;
+}
+.filter-tab {
+	float:left;
+	width:50%;
+}
+.filter-tab .input-label {
+	width:100%;
+	display:block;
+	padding:0;
+	max-width:auto;
+}
+.filter-tab .item-select select {
+	position:static;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* Partner List */
+.partner-tabs {
+	overflow:hidden;
+	background:#f0f3f8;
+	margin:0;
+}
+.partner-tab {
+	width:100%;
+	box-sizing:border-box;
+}
+.partner-tab input {
+	width:100%;
+}
+
+.partner-logo {
+	float:left;
+	width:20%;
+}
+.partner-logo img {
+	width:100%;
+}
+.partner-meta {
+	float:right;
+	width:75%;
+}
+.partner-title {
+	font-weight:700;
+}
+.partner-title small {
+	font-weight:normal;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* Partner Detail */
+#detail {}
+#detail-header {
+	padding:25px 0;
+	text-align:center;
+}
+#detail-header h1 {
+	font-size:13pt;
+	font-weight:700;
+	margin:0;
+	padding:0 15px;
+}
+#detail-header p {
+	padding:0 15px;
+	margin:0;
+}
+#detail-header p.logo img {
+	max-width:50%;
+	padding-bottom:10px;
+}
+#detail-header p.angebot {
+	margin-top:25px;
+	text-align:left;
+}
+#detail-header p.branche {
+	font-style: italic;
+	margin-top:5px;
+	border-bottom:1px solid #0092ac;
+	position:relative;
+	padding-bottom:25px;
+}
+
+#detail-header p.branche::after {
+
+}
+#detail-header .tabs {
+	position:relative;
+	width:100%;
+	border-bottom:1px solid #ccc;
+	background:none;
+	border-top:0;
+	border-bottom:1px solid #0092ac;
+	position:relative;
+}
+#detail-header .tabs::before,
+#detail-header p.branche::before {
+	border-bottom:1px solid #75af2f;
+	position:absolute;
+	left:0;
+	bottom:-1px;
+	content:"";
+	width:33.3%;
+}
+#detail-header .tabs::after,
+#detail-header p.branche::after {
+	border-bottom:1px solid #ff8529;
+	position:absolute;
+	right:0;
+	bottom:-1px;
+	content:"";
+	width:33.3%;
+}
