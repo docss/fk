@@ -133,5 +133,6 @@
 
   <splash src="splash.png" />
   <preference name="SplashScreenDelay" value="6000"/>
+  <preference name="FadeSplashScreenDuration" value="500"/>
 
 </widget>
