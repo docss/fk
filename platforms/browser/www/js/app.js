@@ -75,6 +75,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
+  .state('app.distance', {
+    cache: false,
+    url: '/distance',
+    views: {
+      'distanceContent': {
+        templateUrl: 'templates/distance.html',
+        controller: "DistanceCtrl"
+      }
+    }
+  })
   .state('app.user', {
     url: '/user/:userID',
     cache: false,

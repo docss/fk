@@ -1,5 +1,4 @@
 angular.module('starter.services', [])
-
 .factory('PartnerFactory', function ($http, $rootScope, $stateParams) {
 
   return {
@@ -20,6 +19,9 @@ angular.module('starter.services', [])
     },
     newest: function( max ) {
         return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "newest", limit: max})
+    },
+    distance: function( page, filters, coords ) {
+        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "distance", p: page, filter: filters, latlong: coords})
     }
   };
 
@@ -36,7 +38,6 @@ angular.module('starter.services', [])
 	};
 
 })
-
 .factory('StorageService', function ($localStorage) {
    $localStorage = $localStorage.$default({
       fav: []

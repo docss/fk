@@ -7,7 +7,7 @@
 		<div class="spinner" ng-hide="spinninghide">
         <ion-spinner icon="android"></ion-spinner>
       </div>
-
+		<br/>
     <ion-list ng-repeat="p in favoriten">
 
 		 <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.ID > 0">
@@ -16,6 +16,7 @@
 			  <p class="partner-title">{{p.name}}</p>
 					  <p class="partner-adress">{{p.street}} {{p.number}}</p>
 					  <p class="partner-city">{{p.zip}} {{p.city}}</p>
+					  <p class="partner-short">{{p.short_angebot}}</p>
 				  </div>
 		  </ion-item>
 

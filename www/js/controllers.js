@@ -145,8 +145,6 @@ angular.module('starter.controllers', [])
 /* ... */
 .controller("UserCtrl", function($scope, $state, PartnerFactory, $cordovaGeolocation, StorageService) {
 
-
-
    PartnerFactory.single().then(function(response){
 
       $scope.user = response.data;
@@ -237,6 +235,94 @@ angular.module('starter.controllers', [])
    }
 
    watchMyLocation(); */
+
+})
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+/* IN DER NAEHE */
+.controller("DistanceCtrl", function($scope, $rootScope, $state, FilterFactory, PartnerFactory, $stateParams, $cordovaGeolocation) {
+
+   $rootScope.partners     = [];
+   $scope.page             = 0;
+   $scope.filterData       = {};
+
+   if( $stateParams.q ) {
+      $scope.filterData = {};
+      $scope.filterData = {"q":$stateParams.q};
+   }
+
+   function distance(lat1, lon1, lat2, lon2, unit) {
+   	var radlat1 = Math.PI * lat1/180
+   	var radlat2 = Math.PI * lat2/180
+   	var theta = lon1-lon2
+   	var radtheta = Math.PI * theta/180
+   	var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+   	dist = Math.acos(dist)
+   	dist = dist * 180/Math.PI
+   	dist = dist * 60 * 1.1515
+   	if (unit=="K") { dist = dist * 1.609344 }
+   	if (unit=="N") { dist = dist * 0.8684 }
+   	return dist
+   }
+
+   $scope.moreDataCanBeLoaded = function() {return true;};
+   // $rootScope.filterDataOrt 	= "";
+   // Fill Filters
+   FilterFactory.orte().then( function(response) {
+      $scope.orte = response;
+   });
+   FilterFactory.branchen().then( function(response) {
+      $scope.branchen = response;
+   });
+
+   var posOptions = {timeout: 10000, enableHighAccuracy: false};
+   var lat, long;
+   // $scope.myLocation = "...";
+   $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+
+      // lat  = position.coords.latitude;
+      // long = position.coords.longitude;
+      // return  position.coords.latitude + " " + position.coords.longitude;
+
+      $scope.loadMore = function( filterActive = 0 ) {
+         /*
+            filterActive setzt beim Benutzen der Filter (inkl. "Alle") Ergebnisse und Page zurueck
+         */
+         if( filterActive == 1 ) {
+            $rootScope.partners = [];
+            $scope.page = 0;
+         }
+         PartnerFactory.distance( $scope.page, $scope.filterData, position.coords.latitude + "|" + position.coords.longitude ).then(function( response ){
+            $rootScope.partners = $rootScope.partners.concat(response.data);
+            $rootScope.partners.push(response.data);
+            if( response.data.length > 9 ) {
+               $scope.$broadcast('scroll.infiniteScrollComplete');
+            } else {
+               $scope.moreDataCanBeLoaded = function() {return false;};
+            }
+            $scope.page += 1;
+            $scope.spinninghide = true;
+         }).catch(function(response){
+            $scope.spinninghide = true;
+         });
+
+     };
+     $scope.loadMore(1);
+
+
+    }, function(err) {
+
+      alert("cordovaLocationService Error");
+      return 0;
+
+    });
+
+
+
+  $scope.Filtering = function() {
+     // alert("fdf");
+     $scope.loadMore(1);
+ }
 
 })
 
