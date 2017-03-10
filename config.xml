@@ -6,9 +6,9 @@
         version     = "1.0.0">
 
 
-  <name>familienKarte</name>
+  <name>Familienkarte</name>
   <description>
-        An Ionic Framework and Cordova project.
+        Familienkarte im Landkreis Goslar
     </description>
   <author email="sven.hoffmann@hcmedia.de" href="http://www.hcmedia.de/">
       Sven Hoffmann, hc media GmbH

@@ -66,9 +66,9 @@
     <feature name="Vibration">
         <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
     </feature>
-    <name>familienKarte</name>
+    <name>Familienkarte</name>
     <description>
-        An Ionic Framework and Cordova project.
+        Familienkarte im Landkreis Goslar
     </description>
     <author email="sven.hoffmann@hcmedia.de" href="http://www.hcmedia.de/">
       Sven Hoffmann, hc media GmbH
@@ -82,6 +82,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <splash src="splash.png" />
+    <icon src="icon.png" />
     <allow-intent href="market:*" />
     <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
