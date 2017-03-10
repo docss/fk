@@ -21,7 +21,10 @@ angular.module('starter.services', [])
         return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "newest", limit: max})
     },
     distance: function( page, filters, coords ) {
-        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "distance", p: page, filter: filters, latlong: coords})
+        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "distance", p: page, filters, latlong: coords})
+    },
+    more: function() {
+      return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "more", ID: $stateParams.moreID})
     }
   };
 

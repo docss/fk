@@ -1,6 +1,6 @@
 <ion-view >
 
-	<ion-nav-title><strong>Familien</strong>karte</ion-nav-title>
+	<ion-nav-title><img src="../img/logo.png" /></ion-nav-title>
 
 	<ion-content>
 
@@ -32,13 +32,15 @@
 
 		 <!--  ng-repeat="p in partner.result" -->
         <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.ID > 0">
+			  <div class="inner-list">
 					<div class="partner-logo"><img src="{{p.logo}}" /></div>
 					<div class="partner-meta">
-	        	<p class="partner-title">{{p.name}}</p>
+	        			<p class="partner-title">{{p.name}}</p>
 						<p class="partner-adress">{{p.street}} {{p.number}}</p>
 						<p class="partner-city">({{p.ID}}) {{p.zip}} {{p.city}}</p>
 						<p class="partner-short">{{p.short_angebot}}</p>
 					</div>
+				</div>
        	</ion-item>
 
     </ion-list>

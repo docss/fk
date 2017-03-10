@@ -56,6 +56,8 @@ angular.module('starter.controllers', [])
    $scope.page             = 0;
    $scope.filterData       = {};
 
+   $scope.no_results = true;
+
    if( $stateParams.q ) {
       $scope.filterData = {};
       $scope.filterData = {"q":$stateParams.q};
@@ -89,6 +91,10 @@ angular.module('starter.controllers', [])
          }
          $scope.page += 1;
          $scope.spinninghide = true;
+         if( response.data.error ) {
+            $scope.no_results = false;
+         }
+
       }).catch(function(response){
          $scope.spinninghide = true;
       });
@@ -246,34 +252,17 @@ angular.module('starter.controllers', [])
    $scope.page             = 0;
    $scope.filterData       = {};
 
-   if( $stateParams.q ) {
-      $scope.filterData = {};
-      $scope.filterData = {"q":$stateParams.q};
-   }
-
-   function distance(lat1, lon1, lat2, lon2, unit) {
-   	var radlat1 = Math.PI * lat1/180
-   	var radlat2 = Math.PI * lat2/180
-   	var theta = lon1-lon2
-   	var radtheta = Math.PI * theta/180
-   	var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-   	dist = Math.acos(dist)
-   	dist = dist * 180/Math.PI
-   	dist = dist * 60 * 1.1515
-   	if (unit=="K") { dist = dist * 1.609344 }
-   	if (unit=="N") { dist = dist * 0.8684 }
-   	return dist
-   }
+   $scope.no_results = true;
 
    $scope.moreDataCanBeLoaded = function() {return true;};
    // $rootScope.filterDataOrt 	= "";
    // Fill Filters
-   FilterFactory.orte().then( function(response) {
+   /* FilterFactory.orte().then( function(response) {
       $scope.orte = response;
    });
    FilterFactory.branchen().then( function(response) {
       $scope.branchen = response;
-   });
+   }); */
 
    var posOptions = {timeout: 10000, enableHighAccuracy: false};
    var lat, long;
@@ -302,6 +291,11 @@ angular.module('starter.controllers', [])
             }
             $scope.page += 1;
             $scope.spinninghide = true;
+
+            if( response.data.error ) {
+               $scope.no_results = false;
+            }
+
          }).catch(function(response){
             $scope.spinninghide = true;
          });
@@ -312,32 +306,35 @@ angular.module('starter.controllers', [])
 
     }, function(err) {
 
-      alert("cordovaLocationService Error");
+      alert("Bitte aktivieren Sie Ihr GPS.");
       return 0;
 
     });
 
-
-
-  $scope.Filtering = function() {
-     // alert("fdf");
-     $scope.loadMore(1);
- }
+   // Init Call
+   $scope.Filtering = function() {
+      $scope.loadMore(1);
+   }
 
 })
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
-/* ... */
-/*
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+/* IN DER NAEHE */
+.controller("MoreCtrl", function($scope, $state, PartnerFactory) {
+
+   $scope.spinninghide = false;
+   PartnerFactory.more().then(function(response){
+
+      $scope.more = response.data;
+      $scope.spinninghide = true;
+
+	}).catch(function(response){
+
+      $scope.spinninghide = true;
+
+	});
+
+
 })
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-}); */
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */

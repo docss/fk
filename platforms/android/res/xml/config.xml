@@ -109,4 +109,5 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashScreenDelay" value="6000" />
+    <preference name="FadeSplashScreenDuration" value="500" />
 </widget>

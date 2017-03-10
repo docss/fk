@@ -85,6 +85,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
+  .state('app.more', {
+    cache: false,
+    url: '/more/:moreID',
+    views: {
+      'moreContent': {
+        templateUrl: 'templates/more.html',
+        controller: "MoreCtrl"
+      }
+    }
+  })
   .state('app.user', {
     url: '/user/:userID',
     cache: false,

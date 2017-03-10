@@ -1,6 +1,6 @@
 <ion-view >
 
-	<ion-nav-title><strong>Familien</strong>karte</ion-nav-title>
+	<ion-nav-title><img src="../img/logo.png" /></ion-nav-title>
 
 	<ion-content>
 
@@ -8,36 +8,28 @@
         <ion-spinner icon="android"></ion-spinner>
       </div>
 
-  	<div class="partner-tabs list">
-		<label class="item item-input">
-    		<i class="icon ion-search placeholder-icon"></i>
-			<input type="text" ng-model="filterData.q" data-ng-change="Filtering()" placeholder="Suchen" />
-		</label>
-  	</div>
-
 	<div class="filter-tabs">
-		<div class="filter-tab">
+		<div class="filter-tab fullsize">
 			<label class="item item-input item-select">
-		    	<div class="input-label">Ort</div>
-		    	<select ng-model="filterData.ort" data-ng-change="loadMore(1)">
-					<option ng-repeat="ort in orte.data">{{ort}}</option>
-		    	</select>
-	  		</label>
-    	</div>
-		<div class="filter-tab">
-			<label class="item item-input item-select">
-				<div class="input-label">Branche</div>
-				<select ng-model="filterData.branche" data-ng-change="loadMore(1)">
-					<option ng-repeat="branche in branchen.data">{{branche}}</option>
+				<div class="input-label">Umkreis</div>
+	    		<select ng-model="filterData.radius" data-ng-change="loadMore(1)">
+					<option value="0.01">test</option>
+					<option value="0.1">100 Meter</option>
+					<option value="0.5">500 Meter</option>
+					<option value="1" ng-selected="true">1 Kilometer</option>
+					<option value="5">5 Kilometer</option>
 				</select>
 			</label>
 		</div>
   	</div>
 
+	<div class="no-results" ng-hide="no_results">Unter den gew&auml;hlten Kriterien wurden keine Familienpartner gefunden.</div>
+
     <ion-list ng-repeat="p in partners">
 
 		 <!--  ng-repeat="p in partner.result" -->
-        <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.name != '' && p.ID > 0">
+        <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.ID > 0">
+			  <div class="inner-list">
 					<div class="partner-logo"><img src="{{p.logo}}" /></div>
 					<div class="partner-meta">
                   <p class="partner-distance">{{p.distance}}</p>
@@ -46,6 +38,7 @@
 						<p class="partner-city">{{p.zip}} {{p.city}}</p>
 						<p class="partner-short">{{p.short_angebot}}</p>
 					</div>
+				</div>
        	</ion-item>
 
     </ion-list>

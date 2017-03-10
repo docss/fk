@@ -1,6 +1,6 @@
 <ion-view >
 
-	<ion-nav-title>Meine <strong>Favoriten</strong></ion-nav-title>
+	<ion-nav-title><img src="../img/logo.png" /></ion-nav-title>
 
 	<ion-content>
 
@@ -11,18 +11,20 @@
     <ion-list ng-repeat="p in favoriten">
 
 		 <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.ID > 0">
+			 <div class="inner-list">
 				  <div class="partner-logo"><img src="{{p.logo}}" /></div>
 				  <div class="partner-meta">
-			  <p class="partner-title">{{p.name}}</p>
+			  			<p class="partner-title">{{p.name}}</p>
 					  <p class="partner-adress">{{p.street}} {{p.number}}</p>
 					  <p class="partner-city">{{p.zip}} {{p.city}}</p>
 					  <p class="partner-short">{{p.short_angebot}}</p>
 				  </div>
+			  </div>
 		  </ion-item>
 
     </ion-list>
 
-	 <p ng-bind="error" ng-if="error" style="text-align:center; margin:45px 0 0 0;"></p>
+	 <p ng-bind="error" ng-if="error" class="no-results"></p>
 	 <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="moreDataCanBeLoaded()"></ion-infinite-scroll>
 
   </ion-content>

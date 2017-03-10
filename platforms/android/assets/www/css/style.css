@@ -1,4 +1,8 @@
 /* Empty. Add your own CSS if you like */
+.title.title-center.header-item img {
+	height:100%;
+	width:auto;
+}
 h1 {
 	padding-left:15px;
 	padding-right:15px;
@@ -23,6 +27,12 @@ h1 a i {
 }
 .custom-headline.green {
 	background:#75af2f;
+}
+
+.no-results {
+	padding-top:20px;
+	text-align:center;
+	font-weight:bold;
 }
 
 
@@ -136,8 +146,18 @@ h1 a i {
 }
 .filter-tab {
 	float:left;
-	width:50%;
+	width:33.3%;
 	border-right:1px solid #f1f1f1;
+}
+.filter-tab.fullsize {
+	float:none;
+	width:100%;
+}
+.filter-tab.fullsize select {
+	width:100%;
+	padding:0;
+	max-width:none;
+	text-align:left;
 }
 .filter-tab:last-child {
 	border:0;
@@ -160,6 +180,13 @@ h1 a i {
 	margin:0 -10px;
 	padding-bottom:0 !important;
 	border-bottom:1px solid #f1f1f1;
+}
+ion-list .item-content,
+ion-list .item {
+	background:none !important;
+}
+.item-content {
+	padding:0 !important;
 }
 .partner-tab {
 	width:100%;
@@ -289,8 +316,58 @@ div.spinner {
 }
 .list {
 	padding-top:0;
-	padding-bottom:8px;
+}
+.inner-list {
+	background:#fff;
+	overflow:hidden;
+	padding: 16px 49px 16px 16px;
+	margin:0 0 8px 0;
 }
 .item {
 	border:0;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* MORE */
+#more {
+	padding-top:50px;
+}
+#more .content {
+	padding:0 0px;
+}
+#more ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+	width:100%;
+}
+#more ul li {
+	padding:0;
+	margin:0 0 8px 0;
+}
+#more li a {
+	background:#fff;
+	padding:15px 12px 15px 50px;
+	color:#333;
+	font-weight:700;
+	font-size:16px;
+	text-decoration:none;
+	display:block;
+	position:relative;
+}
+#more li a i:first-child {
+	font-size:20px;
+	position:absolute;
+	left:12px;
+}
+#more li a i:last-child {
+	float:right;
+	font-size:20px;
+}
+#more h1 {
+	text-align:left;
+	padding:0;
+	margin:0 0 15px 0;
+	font-size:18px;
+	font-weight:700;
 }
