@@ -61,6 +61,7 @@
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
 
   <splash src="splash.png" />
+  <icon src="icon.png" />
   <preference name="SplashScreenDelay" value="6000"/>
   <preference name="FadeSplashScreenDuration" value="500"/>
 
