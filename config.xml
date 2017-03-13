@@ -15,6 +15,18 @@
     </author>
   <content src="index.html"/>
 
+  <!-- all builds -->
+  <preference name="orientation" value="portrait" />
+
+  <!-- iOS only -->
+  <preference name="target-device" value="universal" />
+  <preference name="prerendered-icon" value="true" />
+  <preference name="detect-data-types" value="true" />
+
+  <!-- android only -->
+
+  <!-- windows only -->
+
   <access origin="*" />
   <allow-intent href="http://*/*" />
   <allow-intent href="https://*/*" />
@@ -29,8 +41,6 @@
       <allow-intent href="itms:*" />
       <allow-intent href="itms-apps:*" />
   </platform>
-
-  <preference name="permissions" value="android.permission.INTERNET"/>
 
    <preference name="webviewbounce" value="false"/>
    <preference name="UIWebViewBounce" value="false"/>
