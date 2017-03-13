@@ -23,12 +23,15 @@
     <allow-intent href="geo:*" />
     <splash src="splash.png" />
     <icon src="icon.png" />
-    <preference name="permissions" value="android.permission.INTERNET" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="detect-data-types" value="true" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
-    <preference name="SplashScreenDelay" value="6000" />
+    <preference name="SplashScreenDelay" value="4000" />
     <preference name="FadeSplashScreenDuration" value="500" />
 </widget>

@@ -35,7 +35,7 @@
 			  <div class="inner-list">
 					<div class="partner-logo"><img src="{{p.logo}}" /></div>
 					<div class="partner-meta">
-	        			<p class="partner-title">{{p.name}}</p>
+	        			<p class="partner-title" ng-bind-html="p.name"></p>
 						<p class="partner-adress">{{p.street}} {{p.number}}</p>
 						<p class="partner-city">({{p.ID}}) {{p.zip}} {{p.city}}</p>
 						<p class="partner-short">{{p.short_angebot}}</p>

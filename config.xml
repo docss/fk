@@ -123,7 +123,7 @@
 
   <splash src="splash.png" />
   <icon src="icon.png" />
-  <preference name="SplashScreenDelay" value="6000"/>
+  <preference name="SplashScreenDelay" value="4000"/>
   <preference name="FadeSplashScreenDuration" value="500"/>
 
 

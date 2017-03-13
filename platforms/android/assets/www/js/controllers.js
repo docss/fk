@@ -27,7 +27,6 @@ angular.module('starter.controllers', [])
 	});
 
    $scope.RedirectPartner = function(id) {
-      // location.href="#/app-fk/user" + id;
       $state.go("app.user", {"userID": id})
    };
 
@@ -64,8 +63,7 @@ angular.module('starter.controllers', [])
    }
 
    $scope.moreDataCanBeLoaded = function() {return true;};
-   // $rootScope.filterDataOrt 	= "";
-   // Fill Filters
+
    FilterFactory.orte().then( function(response) {
       $scope.orte = response;
    });
@@ -93,6 +91,8 @@ angular.module('starter.controllers', [])
          $scope.spinninghide = true;
          if( response.data.error ) {
             $scope.no_results = false;
+         } else {
+            $scope.no_results = true;
          }
 
       }).catch(function(response){
@@ -182,10 +182,6 @@ angular.module('starter.controllers', [])
    }
 
    /* ------------------------------------------------------------------------- */
-   // Google Maps
-
-
-   /* ------------------------------------------------------------------------- */
    // DISTANCE
    function distance(lat1, lon1, lat2, lon2, unit) {
    	var radlat1 = Math.PI * lat1/180
@@ -201,47 +197,6 @@ angular.module('starter.controllers', [])
    	return dist
    }
 
-   /* ------------------------------------------------------------------------- */
-   // GET LOCATION (ONE TIME)
-   /* function getMyLocation() {
-
-      var posOptions = {timeout: 10000, enableHighAccuracy: false};
-      var lat, long;
-      // $scope.myLocation = "...";
-      $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-         // lat  = position.coords.latitude;
-         // long = position.coords.longitude;
-         // $scope.myLocation =  position.coords.latitude + " " + position.coords.longitude;
-       }, function(err) {
-         // error
-         alert("error");
-       });
-
-   } */
-
-   /* ------------------------------------------------------------------------- */
-   // WATCH LOCATION
-   /* function watchMyLocation() {
-
-      var watchOptions = {
-         timeout : 10000,
-         maximumAge: 5000,
-         enableHighAccuracy: true
-      };
-
-     var watch = $cordovaGeolocation.watchPosition(watchOptions);
-     watch.then(
-       null,
-       function(err) {
-       }, function(position) {
-         $scope.myLocation =  position.coords.latitude + " - " + position.coords.longitude;
-         $scope.myDistance = "Distanz: " + Math.round10( distance(position.coords.latitude, position.coords.longitude, $scope.user.lat, $scope.user.long, "K"), -2 ) + " km";
-     });
-     //watch.clearWatch();
-   }
-
-   watchMyLocation(); */
-
 })
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -255,28 +210,14 @@ angular.module('starter.controllers', [])
    $scope.no_results = true;
 
    $scope.moreDataCanBeLoaded = function() {return true;};
-   // $rootScope.filterDataOrt 	= "";
-   // Fill Filters
-   /* FilterFactory.orte().then( function(response) {
-      $scope.orte = response;
-   });
-   FilterFactory.branchen().then( function(response) {
-      $scope.branchen = response;
-   }); */
 
    var posOptions = {timeout: 10000, enableHighAccuracy: false};
    var lat, long;
    // $scope.myLocation = "...";
    $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
 
-      // lat  = position.coords.latitude;
-      // long = position.coords.longitude;
-      // return  position.coords.latitude + " " + position.coords.longitude;
-
       $scope.loadMore = function( filterActive = 0 ) {
-         /*
-            filterActive setzt beim Benutzen der Filter (inkl. "Alle") Ergebnisse und Page zurueck
-         */
+
          if( filterActive == 1 ) {
             $rootScope.partners = [];
             $scope.page = 0;
@@ -294,6 +235,8 @@ angular.module('starter.controllers', [])
 
             if( response.data.error ) {
                $scope.no_results = false;
+            } else {
+               $scope.no_results = true;
             }
 
          }).catch(function(response){
