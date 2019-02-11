@@ -1,0 +1,78 @@
+<?php
+
+  error_reporting(0);
+	header('Content-Type: text/html; charset=utf-8'); 
+	require_once 'sql.php';
+	
+	$p = "";
+	$filterOrt = "";
+	$filterBranchen = "";
+	$filterQ = "";
+	$filterFav = "";
+	$filterFavStr = "";
+	$sorting = "id";
+	
+	$limit = 10;
+
+	( $post->p ) ? $p = $post->p : $p = 0;
+	
+	// filter: ort
+	if( $post->filters->ort ) {
+		if( $post->filters->ort != "Alle" ) $filterOrt = " AND ort = '" . $post->filters->ort . "'";
+	}
+	// filter: branchen
+	if( $post->filters->branche ) {
+		if( $post->filters->branche != "Alle" ) $filterBranchen = " AND branche = '" . $post->filters->branche . "'";
+	}
+	// filter: q - volltext
+	if( $post->filters->q ) {
+		$q = trim( mysql_real_escape_string( htmlentities( $post->filters->q ) ) );
+		$filterQ = " AND (name LIKE '%" . $q . "%' OR angebot LIKE '%" . $post->filters->q . "%')";
+	}
+	if( $post->filters->sorting ) {
+		$sorting = $post->filters->sorting;
+	}
+
+	
+	$query = "SELECT DISTINCT * FROM familienkarte WHERE id != 0" . $filterOrt . $filterBranchen . $filterQ . " ORDER BY " . $sorting . " LIMIT " . ($limit*$p) .", " . $limit;
+	
+	$partner = mysql_query( $query );
+	if( mysql_num_rows( $partner ) ) {
+		while( $p = mysql_fetch_assoc($partner) ) {
+			
+			if( $p["logo"] ) $logo = "http://www.familienkarte-gs.de/hcadmin/vorteilsgeber/thumbs/thumbs" . $p["logo"];
+			else $logo = false;
+			
+			$users[] = array(
+				"ID"		=> $p["id"],
+				"name"		=> $p["name"],
+				"city"		=> utf8_encode( $p["ort"] ),
+				"zip"		=> $p["plz"],
+				"street"	=> utf8_encode( utf8_decode($p["strasse"]) ),
+				"number"	=> $p["hsnr"],
+				"gemeinde"	=> $p["gemeinde"],
+				"phone"		=> $p["telefon"],
+				"email"		=> $p["email"],
+				"branche"	=> $p["branche"],
+				"short_angebot"	=> $p["short_angebot"],
+				"logo"		=> $logo,
+				// "query"		=> $query
+			);
+		}
+
+		/* $array = array(
+			"query"		=> $query,
+			"page"		=> $page,
+			$users
+		); */
+		$array = $users;
+	} else {
+		$array = array(
+			// "query"		=> $query,
+			"page"		=> "",
+			"result"	=> array(),
+			"error"		=> "no results"
+		);
+	}
+	
+	echo json_encode( $array );
