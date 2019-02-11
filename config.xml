@@ -18,6 +18,8 @@
   <!-- all builds -->
   <preference name="orientation" value="portrait" />
 
+  <preference name="Fullscreen" value="true" />
+
   <!-- iOS only -->
   <preference name="target-device" value="universal" />
   <preference name="prerendered-icon" value="true" />
@@ -97,7 +99,7 @@
    <preference name="UIWebViewBounce" value="false"/>
    <preference name="DisallowOverscroll" value="true"/>
 
-   <preference name="android-minSdkVersion" value="16"/>
+   <preference name="android-minSdkVersion" value="21"/>
    <preference name="BackupWebStorage" value="none"/>
 
   <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
