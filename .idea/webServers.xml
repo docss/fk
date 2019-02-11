@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="cff377d4-583d-48b9-b050-b0a81813c9b2" name="familienkarte app" url="http://familienkarte-gs.de">
-        <fileTransfer host="familienkarte-gs.de" port="21">
+        <fileTransfer host="familienkarte-gs.de" port="21" rootFolder="/web/app">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

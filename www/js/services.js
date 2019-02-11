@@ -3,28 +3,28 @@ angular.module('starter.services', [])
 
   return {
     all: function ( page, filters, favs ) {
-        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "list", p: page, filters, favs })
+        return $http.post("https://www.familienkarte-gs.de/app/app.php", {action: "list", p: page, filters, favs })
     },
     sponsored: function() {
-        return $http.post("http://www.familienkarte-gs.de/app/app.php", {"action": "sponsored"})
+        return $http.post("https://www.familienkarte-gs.de/app/app.php", {"action": "sponsored"})
     },
     favoriten: function( page, favs ) {
-        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "favoriten", p: page, favs })
+        return $http.post("https://www.familienkarte-gs.de/app/app.php", {action: "favoriten", p: page, favs })
     },
     single: function () {
-	     return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "partner", ID: $stateParams.userID})
+	     return $http.post("https://www.familienkarte-gs.de/app/app.php", {action: "partner", ID: $stateParams.userID})
     },
     filter: function ( page, filters ) {
-        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "list", p: page, filter: filters})
+        return $http.post("https://www.familienkarte-gs.de/app/app.php", {action: "list", p: page, filter: filters})
     },
     newest: function( max ) {
-        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "newest", limit: max})
+        return $http.post("https://www.familienkarte-gs.de/app/app.php", {action: "newest", limit: max})
     },
     distance: function( page, filters, coords ) {
-        return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "distance", p: page, filters, latlong: coords})
+        return $http.post("https://www.familienkarte-gs.de/app/app.php", {action: "distance", p: page, filters, latlong: coords})
     },
     more: function() {
-      return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "more", ID: $stateParams.moreID})
+      return $http.post("https://www.familienkarte-gs.de/app/app.php", {action: "more", ID: $stateParams.moreID})
     }
   };
 
@@ -33,10 +33,10 @@ angular.module('starter.services', [])
 
 	return {
 		orte: function() {
-			return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "orte"})
+			return $http.post("https://www.familienkarte-gs.de/app/app.php", {action: "orte"})
 		},
 		branchen: function() {
-			return $http.post("http://www.familienkarte-gs.de/app/app.php", {action: "branchen"});
+			return $http.post("https://www.familienkarte-gs.de/app/app.php", {action: "branchen"});
 		}
 	};
 

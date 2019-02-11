@@ -1,0 +1,12 @@
+{
+  "name": "familienKarte",
+  "integrations": {},
+  "type": "ionic1",
+  "id": "fb0a18b5",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

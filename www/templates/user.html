@@ -13,8 +13,7 @@
 
 
         <div id="detail-header">
-
-           <p class="logo" ng-if="user.logo"><img src="{{user.logo}}" /></p>
+           <p class="logo" ng-if="user.user_logo"><img src="{{user.user_logo}}" /></p>
            <h1 ng-bind-html="user.name"></h1>
            <p class="adress"><i class="icon ion-ios-location"></i> {{user.street}} {{user.number}} &#183; {{user.zip}} {{user.city}}</p>
            <p class="branche">Branche: {{user.branche}}</p>

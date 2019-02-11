@@ -25,7 +25,7 @@
 
 	<div class="no-results" ng-hide="no_results">Unter den gew&auml;hlten Kriterien wurden keine Familienpartner gefunden.</div>
 
-    <ion-list ng-repeat="p in partners">
+    <ion-list ng-repeat="p in partners track by $index">
 
 		 <!--  ng-repeat="p in partner.result" -->
         <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.ID > 0">

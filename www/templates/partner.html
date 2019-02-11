@@ -45,11 +45,11 @@
 
 	<div class="no-results" ng-hide="no_results">Unter den gew&auml;hlten Kriterien wurden keine Familienpartner gefunden.</div>
 
-    <ion-list ng-repeat="p in partners">
+    <ion-list ng-repeat="p in partners track by $index">
 
-        <ion-item href="#/app-fk/user/{{p.ID}}" ng-if="p.name != '' && p.ID > 0">
+        <ion-item href="#/app-fk/user/{{p.idD}}" ng-if="p.name != '' && p.id > 0">
 			  <div class="inner-list">
-					<div class="partner-logo"><img src="{{p.logo}}" /></div>
+					<div class="partner-logo"><img ng-if="p.logo != '' && p.logo != 'none.jpg'" src="http://www.familienkarte-gs.de/hcadmin/vorteilsgeber/thumbs/thumbs{{p.logo}}" /></div>
 					<div class="partner-meta">
 	        			<p class="partner-title" ng-bind-html="p.name"></p>
 						<p class="partner-adress">{{p.street}} {{p.number}}</p>

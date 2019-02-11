@@ -16,12 +16,13 @@
   	</div>
 
 	<div ng-hide="nosponsores" id="sponsored_ad" ng-click="RedirectPartner(sponsored.ID)">
-		<img src="{{sponsored.sponsored_image}}" />
+		<img src="{{sponsored.user_logo}}" />
 		<div class="sponsored_container">
 			<p class="sponsored_date"><span>{{sponsored.sponsored_date}}</span></p>
 			<p class="sponsored_text">
 				<span class="title" ng-bind-html="sponsored.name"></span>
-				<span class="text" ng-bind-html="sponsored.sponsored_text"></span>
+        <span class="text" ng-bind-html="sponsored.sponsored_text"></span>
+        <span class="text"><small>(gültig bis: {{ sponsored.sponsored_date }})</small></span>
 			</p>
 		</div>
 	</div>

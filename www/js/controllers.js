@@ -154,7 +154,7 @@ angular.module('starter.controllers', [])
    PartnerFactory.single().then(function(response){
 
       $scope.user = response.data;
-      // console.log( $scope.user.ID );
+      // console.log( $scope.user.id );
       console.log("isFav: " + StorageService.get($scope.user.ID) );
       if( StorageService.get($scope.user.ID) >= 0 ) $scope.isFav = true;
       else $scope.isFav = false;
